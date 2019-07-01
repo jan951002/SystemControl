@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Utilidades</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!--Google fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<ul class="list-group">
+
+    <li>
+        <a href="#compra-producto" class="inf list-group-item list-group-item-action"><strong>Simulador - Compra de
+            producto</strong> <span class="glyphicon glyphicon-menu-down pull-right"></span></a>
+    </li>
+    <section class="oculto container-fluid" id="compra-producto">
+        <div id="page-content-wrapper">
+            <div class="row">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="col-lg-12">
+                                <div class="intro-text">
+                                    <form class="well form-horizontal" onsubmit="return simuladorCompraProducto()">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Valor del producto</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i
+                                                            class="glyphicon glyphicon-usd"></i></span><input
+                                                            id="valor-producto" name="valor-producto"
+                                                            placeholder="Ingrese el valor del producto"
+                                                            class="form-control" required="true" value="" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Porcentaje de utilidad</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span
+                                                            class="input-group-addon">%</span><input
+                                                            id="porcentaje-utilidad"
+                                                            name="porcentaje-utilidad"
+                                                            placeholder="Ingrese el porcentaje de utilidad"
+                                                            class="form-control"
+                                                            required="true"
+                                                            value=""
+                                                            type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">I.V.A.</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span
+                                                            class="input-group-addon">%</span><input
+                                                            id="iva" name="iva"
+                                                            placeholder="Ingrese el impuesto de iva"
+                                                            class="form-control" required="true" value="" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </fieldset>
+
+                                        <button type="button" class="btn btn-secondary text-right" onclick="reset()">
+                                            Limpiar
+                                        </button>
+                                        <button type="button" class="btn btn-success text-right"
+                                                onclick="simuladorCompraProducto()">Calcular
+                                        </button>
+
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Valor venta</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i
+                                                            class="glyphicon glyphicon-usd"></i></span><input
+                                                            id="valor-venta" name="valor-venta"
+                                                            class="form-control" value="" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Utilidad de la venta</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span
+                                                            class="input-group-addon"><i
+                                                            class="glyphicon glyphicon-usd"></i></span><input
+                                                            id="utilidad-venta"
+                                                            name="utilidad-venta"
+                                                            class="form-control"
+                                                            value=""
+                                                            type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">I.V.A. de la venta</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span
+                                                            class="input-group-addon"><i
+                                                            class="glyphicon glyphicon-usd"></i></span><input
+                                                            id="iva-venta" name="iva-venta"
+                                                            class="form-control" value="" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</ul>
+
+<script>
+
+    function simuladorCompraProducto() {
+
+        var pesos = " $";
+        var valorCompra = document.getElementById("valor-producto").value;
+        var porcentajeUtilidad = document.getElementById("porcentaje-utilidad").value;
+        var porcentajeIva = document.getElementById("iva").value;
+
+        if (valorCompra === "") {
+            alert("El valor de Compra del Producto es obligatorio");
+        } else if (porcentajeUtilidad === "") {
+            alert("El Porcentaje de Utilidad es obligatorio");
+        } else if (porcentajeIva === "") {
+            alert("El porcentaje del Iva es obligatorio");
+        } else {
+            var resultadoVenta = document.getElementById("valor-venta").value;
+            var resultadoUtilidad = document.getElementById("utilidad-venta").value;
+            var resultadoIva = document.getElementById("iva-venta").value;
+            var utilidad = (valorCompra * porcentajeUtilidad) / 100;
+            var iva = (valorCompra * porcentajeIva) / 100;
+            var valorVenta = (parseInt(valorCompra) + parseInt(utilidad) + parseInt(iva));
+
+
+            resultadoVenta = parseInt(valorVenta);
+            resultadoUtilidad = parseInt(utilidad);
+            resultadoIva = parseInt(iva);
+            document.getElementById("valor-venta").value = resultadoVenta;
+            document.getElementById("utilidad-venta").value = resultadoUtilidad;
+            document.getElementById("iva-venta").value = resultadoIva;
+
+
+        }
+
+
+    }
+
+</script>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+</html>

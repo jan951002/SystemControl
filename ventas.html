@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Ventas</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--Favicon-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!--Google fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<ul class="list-group">
+    <!--Inicio de los fundamentos-->
+    <li class="page-scroll">
+        <a href="#fundamentos" class="inf list-group-item list-group-item-action"><strong>Vender producto</strong>
+            <span class="glyphicon glyphicon-menu-down pull-right"></span></a>
+    </li>
+    <section class="oculto" id="fundamentos">
+        <div id="page-content-wrapper">
+            <div class="row">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="col-lg-12">
+                                <div class="intro-text">
+                                    <form class="well form-horizontal">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Código</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i
+                                                            class="glyphicon glyphicon-barcode"></i></span><input
+                                                            id="codigo-vender" name="codigo"
+                                                            placeholder="Ingrese el código"
+                                                            class="form-control" required="true" value="" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Precio de venta</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i
+                                                            class="glyphicon glyphicon-usd"></i></span><input
+                                                            id="precio-venta"
+                                                            name="precio-compra"
+                                                            placeholder="Ingrese el precio de venta"
+                                                            class="form-control"
+                                                            required="true"
+                                                            value=""
+                                                            type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Cantidad a vender</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i
+                                                            class="glyphicon glyphicon-minus"></i></span><input
+                                                            id="cantidad-venta" name="cantidad-comprar"
+                                                            placeholder="Ingrese la cantidad a vender"
+                                                            class="form-control" required="true" value="" type="number">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </fieldset>
+
+                                        <button type="button" class="btn btn-secondary text-right" onclick="reset()">
+                                            Limpiar
+                                        </button>
+                                        <button type="button" class="btn btn-success text-right">Vender</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</ul>
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+</html>
